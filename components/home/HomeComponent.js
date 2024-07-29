@@ -13,7 +13,7 @@ import { orange } from "../helper/Color";
 
 const Title = ({type}) => {
 
-    const title = type === "tv" ? "TV Shows" : "Movies";
+    const title = type === "tv" ? "Lajo TV" : "Lalajo";
     return (
         <View>
             <Text style={Styles.screenTitle}>{title}</Text>
@@ -46,7 +46,7 @@ const HomeComponent = ({data, subTitle, type}) => {
     return(
         <Screen>
             <StatusBar style="dark-content" />
-            <MovieHeader />
+            <MovieHeader type={type} />
             <Container data={data} subTitle={subTitle} type={type}/>
         </Screen>
     );
