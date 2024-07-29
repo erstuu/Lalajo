@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Provider } from 'react-redux';
 import store from './store/configureStore';
 
 // screen
+import SearchScreen from './screens/SearchScreen';
 import MovieScreen from './screens/MovieScreen';
 import MovieListScreen from './screens/MovieListScreen';
 import MovieDetailScreen from "./screens/MovieDetailScreen";
@@ -68,6 +69,13 @@ export default function App() {
                     screenOptions={{
                         headerShown: false
                     }}>
+                    <Stack.Screen
+                        name="Search"
+                        component={SearchScreen}
+                        options={{
+                            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+                            gestureDirection: "vertical",
+                        }} />
                     <Stack.Screen name={tabStack} component={BottomTab} />
                     <Stack.Screen name={movies} component={MovieScreen} />
                     <Stack.Screen name={movieList} component={MovieListScreen} />
