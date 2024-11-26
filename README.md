@@ -7,5 +7,5 @@ You can also search for your favorite movies fastly
 <br>
 This Mobile App is Using TMDB API as their data hold
 
-# Tech used
-This app used javascript as programming language and React Native as their framework for mobile app
+# Tech & Library used
+This app used javascript as programming language and React Native as their framework for mobile app, and redux toolkit for the handling state
