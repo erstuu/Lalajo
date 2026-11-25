@@ -50,7 +50,7 @@ const Seasons = ({ seasons }) => {
     );
 };
 
-const TVDetailScreen = ({ route }) => {
+const TvDetailScreen = ({ route }) => {
     const { id } = route.params;
     const navigation = useNavigation();
     const dispatch = useDispatch();
@@ -131,7 +131,7 @@ const TVDetailScreen = ({ route }) => {
     );
 };
 
-export default TVDetailScreen;
+export default TvDetailScreen;
 
 const styles = StyleSheet.create({
     root: {

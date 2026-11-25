@@ -52,7 +52,7 @@ const WatchlistScreen = () => {
                         <Pressable
                             onPress={() =>
                                 navigation.navigate(
-                                    item.media === "tv" ? "TVDetail" : "MovieDetail",
+                                    item.media === "tv" ? "TvDetail" : "MovieDetail",
                                     { id: item.id }
                                 )
                             }

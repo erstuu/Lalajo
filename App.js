@@ -16,7 +16,7 @@ import SearchScreen from './screens/SearchScreen';
 import MovieScreen from './screens/MovieScreen';
 import MovieListScreen from './screens/MovieListScreen';
 import MovieDetailScreen from "./screens/MovieDetailScreen";
-import TVDetailScreen from "./screens/TVDetailScreen";
+import TvDetailScreen from "./screens/TvDetailScreen";
 import SplashScreen from './screens/SplashScreen';
 import OnboardingScreen from './screens/OnboardingScreen';
 import { PAGES } from "./navigation/tabs";
@@ -116,7 +116,7 @@ export default function App() {
                         <Stack.Screen name={movies} component={MovieScreen} />
                         <Stack.Screen name={movieList} component={MovieListScreen} />
                         <Stack.Screen name={movieDetail} component={MovieDetailScreen} />
-                        <Stack.Screen name="TVDetail" component={TVDetailScreen} />
+                        <Stack.Screen name="TvDetail" component={TvDetailScreen} />
                     </Stack.Navigator>
                     </NavigationContainer>
                 ) : phase === "splash" ? (

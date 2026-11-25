@@ -11,7 +11,7 @@ const MoviePoster = ({ item, type }) => {
         <Pressable
             onPress={() => {
                 if (type === "tv") {
-                    navigation.navigate("TVDetail", { id: item.id });
+                    navigation.navigate("TvDetail", { id: item.id });
                 } else {
                     navigation.navigate("MovieDetail", { id: item.id });
                 }

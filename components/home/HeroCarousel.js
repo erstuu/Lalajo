@@ -69,7 +69,7 @@ const HeroCarousel = ({ items, type }) => {
                 style={{ marginTop: spacing.lg }}
                 renderItem={({ item }) => (
                     <Pressable
-                        onPress={() => navigation.push(type === "tv" ? "TVDetail" : "MovieDetail", { id: item.id })}
+                        onPress={() => navigation.push(type === "tv" ? "TvDetail" : "MovieDetail", { id: item.id })}
                         style={({ pressed }) => [styles.card, pressed && { opacity: 0.9 }]}
                     >
                         <Image

@@ -31,7 +31,7 @@ const MoviePosterAndInfo = ({ item, type }) => {
     return (
         <Pressable
             onPress={() => {
-                navigation.navigate(type === "tv" ? "TVDetail" : "MovieDetail", { id: item.id });
+                navigation.navigate(type === "tv" ? "TvDetail" : "MovieDetail", { id: item.id });
             }}
             style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1, width: CARD_WIDTH }]}
         >

@@ -40,7 +40,7 @@ const DiscoverScreen = () => {
     };
 
     const openDetail = (item) => {
-        navigation.navigate(media === "tv" ? "TVDetail" : "MovieDetail", { id: item.id });
+        navigation.navigate(media === "tv" ? "TvDetail" : "MovieDetail", { id: item.id });
     };
 
     const renderItem = ({ item }) => (
