@@ -4,8 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 // Components
-import Screen from "../Screen";
-import MoviesRow from "./MoviesRow";
+import ScreenContainer from "../ScreenContainer";
+import MediaRow from "./MediaRow";
 import HeroCarousel from "./HeroCarousel";
 
 // Helper
@@ -22,7 +22,7 @@ const HomeComponent = ({ data, subTitle, type, title = "Lalajo" }) => {
     ];
 
     return (
-        <Screen>
+        <ScreenContainer>
             <StatusBar style="light" />
             <ScrollView
                 showsVerticalScrollIndicator={false}
@@ -34,11 +34,11 @@ const HomeComponent = ({ data, subTitle, type, title = "Lalajo" }) => {
                 <HeroCarousel items={data.nowPlaying || data.popular} type={type} />
                 <View style={styles.shelves}>
                     {shelves.map(({ id, title }) => (
-                        <MoviesRow key={id} id={id} title={title} type={type} data={data[id]} />
+                        <MediaRow key={id} id={id} title={title} type={type} data={data[id]} />
                     ))}
                 </View>
             </ScrollView>
-        </Screen>
+        </ScreenContainer>
     );
 };
 

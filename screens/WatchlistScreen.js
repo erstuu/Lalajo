@@ -3,7 +3,7 @@ import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Screen from "../components/Screen";
+import ScreenContainer from "../components/ScreenContainer";
 import { getImageUrl } from "../service/url";
 import { getWatchlist } from "../service/watchlist";
 import { colors, radius, spacing, type as typeScale } from "../theme";
@@ -27,7 +27,7 @@ const WatchlistScreen = () => {
     );
 
     return (
-        <Screen>
+        <ScreenContainer>
             <View style={styles.header}>
                 <Text style={styles.largeTitle}>Watchlist</Text>
             </View>
@@ -86,7 +86,7 @@ const WatchlistScreen = () => {
                     )}
                 />
             )}
-        </Screen>
+        </ScreenContainer>
     );
 };
 

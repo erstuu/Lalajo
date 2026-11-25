@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet} from "react-native";
 import { useRoute } from "@react-navigation/native";
-import BackIcon from "../components/utils/BackIcon";
+import BackIcon from "../components/ui/BackIcon";
 import {useDispatch, useSelector} from "react-redux";
-import Screen from "../components/Screen";
+import ScreenContainer from "../components/ScreenContainer";
 import {fetchCategory, selectCategory} from "../store/features/catalogSlice";
 import MovieList from "../components/MovieList";
 import { colors, spacing } from "../theme";
@@ -35,7 +35,7 @@ const MovieListScreen = () => {
     const headerTitle = `${title} ${type === "tv" ? "TV Show" : "Movies"}`;
 
     return (
-        <Screen>
+        <ScreenContainer>
             <View style={styles.header}>
                 <BackIcon />
                 <Text style={styles.headerTitle}>{headerTitle}</Text>
@@ -47,7 +47,7 @@ const MovieListScreen = () => {
                 onReachEnd={onReachEnd}
                 loading={category.status === "loading"}
             />
-        </Screen>
+        </ScreenContainer>
     );
 };
 

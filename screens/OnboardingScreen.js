@@ -16,10 +16,10 @@ import GradientText from "../components/onboarding/GradientText";
 import SlideBackground from "../components/onboarding/SlideBackground";
 import PosterCarousel from "../components/onboarding/PosterCarousel";
 import RatingCard from "../components/onboarding/RatingCard";
-import GenreChips from "../components/onboarding/GenreChips";
+import GenreChips from "../components/ui/GenreChips";
 import SavedCard from "../components/onboarding/SavedCard";
-import PrimaryButton from "../components/onboarding/PrimaryButton";
-import { SLIDES } from "../components/onboarding/slides";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import { SLIDES } from "../constants/onboardingSlides";
 import { onboarding } from "../theme";
 
 // Tiga slide yang bisa digeser; Skip dan Get Started menutup onboarding.

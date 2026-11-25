@@ -6,7 +6,7 @@ import MoviePoster from "../MoviePoster";
 import Skeleton from "../ui/Skeleton";
 import { colors, spacing } from "../../theme";
 
-const MoviesRow = ({ id, title, type, data }) => {
+const MediaRow = ({ id, title, type, data }) => {
     const navigation = useNavigation();
     const loading = !data || data.length === 0;
 
@@ -40,7 +40,7 @@ const MoviesRow = ({ id, title, type, data }) => {
     );
 };
 
-export default MoviesRow;
+export default MediaRow;
 
 const styles = StyleSheet.create({
     container: {

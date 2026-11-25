@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../theme";
 
-const Screen = ({ children }) => {
+const ScreenContainer = ({ children }) => {
     return (
         <View style={styles.root}>
             <StatusBar style="light" />
@@ -15,7 +15,7 @@ const Screen = ({ children }) => {
     );
 };
 
-export default Screen;
+export default ScreenContainer;
 
 const styles = StyleSheet.create({
     root: {

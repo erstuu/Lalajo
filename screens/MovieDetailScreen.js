@@ -7,7 +7,7 @@ import MovieBackdrop, { HERO_HEIGHT } from "../components/movieDetail/MovieBackd
 import { TrailerPlayButton, TrailerVideo } from "../components/movieDetail/MoviePlayButton";
 import MovieTitle from "../components/movieDetail/MovieTitle";
 import MovieRating from "../components/movieDetail/MovieRating";
-import BackIcon from "../components/utils/BackIcon";
+import BackIcon from "../components/ui/BackIcon";
 import SaveButton from "../components/movieDetail/SaveButton";
 import Skeleton from "../components/ui/Skeleton";
 

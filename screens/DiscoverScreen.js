@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Screen from "../components/Screen";
-import GenreChips from "../components/onboarding/GenreChips";
+import ScreenContainer from "../components/ScreenContainer";
+import GenreChips from "../components/ui/GenreChips";
 import { fetchDiscoverPage, setFilter } from "../store/features/discoverSlice";
 import { DISCOVER_GENRES } from "../constants/genres";
 import { getImageUrl } from "../service/url";
@@ -68,7 +68,7 @@ const DiscoverScreen = () => {
     );
 
     return (
-        <Screen>
+        <ScreenContainer>
             <View style={styles.header}>
                 <Text style={styles.largeTitle}>Discover</Text>
             </View>
@@ -141,7 +141,7 @@ const DiscoverScreen = () => {
                     }
                 />
             )}
-        </Screen>
+        </ScreenContainer>
     );
 };
 

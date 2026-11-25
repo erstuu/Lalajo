@@ -4,7 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import Screen from "../components/Screen";
+import ScreenContainer from "../components/ScreenContainer";
 import { requestSearchMovie, selectMovieSearch } from "../store/features/searchSlice";
 import { fetchCategory, selectCategory } from "../store/features/catalogSlice";
 import MovieList from "../components/MovieList";
@@ -41,7 +41,7 @@ const SearchScreen = () => {
     };
 
     return (
-        <Screen>
+        <ScreenContainer>
             <Text style={styles.largeTitle}>Search</Text>
             <View style={styles.searchBar}>
                 <Ionicons name="search" size={18} color={colors.labelTertiary} style={styles.icon} />
@@ -76,7 +76,7 @@ const SearchScreen = () => {
                     />
                 </>
             )}
-        </Screen>
+        </ScreenContainer>
     );
 };
 

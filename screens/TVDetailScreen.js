@@ -12,7 +12,7 @@ import MovieOverview from "../components/movieDetail/MovieOverview";
 import MovieCast from "../components/movieDetail/MovieCast";
 import MovieImages from "../components/movieDetail/MovieImages";
 import MovieRecommendations from "../components/movieDetail/MovieRecommendations";
-import BackIcon from "../components/utils/BackIcon";
+import BackIcon from "../components/ui/BackIcon";
 import SaveButton from "../components/movieDetail/SaveButton";
 import Skeleton from "../components/ui/Skeleton";
 import { getImageUrl } from "../service/url";

@@ -2,7 +2,7 @@ export const SLIDES = [
     {
         id: "explore",
         visual: "carousel",
-        background: require("../../assets/onboarding/bg-explore.png"),
+        background: require("../assets/onboarding/bg-explore.png"),
         eyebrow: null,
         title: "Explore Movies",
         titleAccent: "& TV Shows",
@@ -11,7 +11,7 @@ export const SLIDES = [
     {
         id: "details",
         visual: "details",
-        background: require("../../assets/onboarding/bg-find.png"),
+        background: require("../assets/onboarding/bg-find.png"),
         eyebrow: "Details at a glance",
         title: "Find the",
         titleAccent: "Perfect Watch",
@@ -20,7 +20,7 @@ export const SLIDES = [
     {
         id: "favorites",
         visual: "favorites",
-        background: require("../../assets/onboarding/bg-save.png"),
+        background: require("../assets/onboarding/bg-save.png"),
         eyebrow: null,
         title: "Save Your",
         titleAccent: "Favorites",
