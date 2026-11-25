@@ -1,17 +1,17 @@
 # Graph Report - Lalajo  (2026-11-25)
 
 ## Corpus Check
-- 60 files · ~13,869 words
+- 67 files · ~14,246 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 1 file(s) not represented in the graph (top: (none) 1)
 
 ## Summary
-- 279 nodes · 798 edges · 27 communities (10 shown, 17 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.85)
+- 293 nodes · 833 edges · 26 communities (11 shown, 15 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `560b496d`
+- Built from commit: `8751f6e6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,74 +19,73 @@
 - Onboarding & Branding
 - Movie & TV Details
 - Home Screen Layout
-- react-native
+- DiscoverScreen.js
 - Expo App Config
 - Redux Store & TMDB API
 - dependencies
 - Package Metadata
 - NPM Scripts
-- Axios Dependency
+- axios
 - Expo Core
 - Blur Effect Library
 - Font Loading
 - Metro Runtime
-- Status Bar
+- useWatchlist.js
 - React DOM Renderer
 - Async Storage
 - Fast Image
 - Image Zoom Viewer
 - Linear Gradient
-- DiscoverScreen.js
+- react-native-ionicons@^4.6.5
 - @react-navigation/stack
 - react-native-pager-view
-- React Native Web
 - react-native-webview@13.8.6
 - react-native-youtube-iframe
 
 ## God Nodes (most connected - your core abstractions)
 1. `react-native` - 42 edges
-2. `react` - 37 edges
+2. `react` - 39 edges
 3. `colors` - 25 edges
-4. `getImageUrl()` - 25 edges
-5. `TVDetailScreen()` - 17 edges
-6. `MovieDetailScreen()` - 16 edges
+4. `getImageUrl()` - 23 edges
+5. `TvDetailScreen()` - 18 edges
+6. `MovieDetailScreen()` - 17 edges
 7. `@react-navigation/native` - 15 edges
 8. `onboarding` - 14 edges
 9. `spacing` - 12 edges
 10. `react-native-vector-icons` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `PosterCarousel()` --calls--> `getImageUrl()`  [EXTRACTED]
-  components/onboarding/PosterCarousel.js → service/url.js
-- `SavedCard()` --calls--> `getImageUrl()`  [EXTRACTED]
-  components/onboarding/SavedCard.js → service/url.js
-- `Visual()` --calls--> `GenreChips()`  [EXTRACTED]
-  screens/OnboardingScreen.js → components/onboarding/GenreChips.js
-- `MoviePoster()` --calls--> `getImageUrl()`  [EXTRACTED]
-  components/MoviePoster.js → service/url.js
-- `MovieDetailScreen()` --calls--> `BackIcon()`  [EXTRACTED]
-  screens/MovieDetailScreen.js → components/utils/BackIcon.js
+- `MovieListScreen()` --calls--> `ScreenContainer()`  [EXTRACTED]
+  screens/MovieListScreen.js → components/ScreenContainer.js
+- `SearchScreen()` --calls--> `ScreenContainer()`  [EXTRACTED]
+  screens/SearchScreen.js → components/ScreenContainer.js
+- `MovieScreen()` --calls--> `HomeComponent()`  [EXTRACTED]
+  screens/MovieScreen.js → components/home/HomeComponent.js
+- `TvScreen()` --calls--> `HomeComponent()`  [EXTRACTED]
+  screens/TvScreen.js → components/home/HomeComponent.js
+- `MovieListScreen()` --calls--> `BackIcon()`  [EXTRACTED]
+  screens/MovieListScreen.js → components/ui/BackIcon.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (27 total, 17 thin omitted)
+## Communities (26 total, 15 thin omitted)
 
 ### Community 0 - "Onboarding & Branding"
-Cohesion: 0.09
-Nodes (32): App(), GradientText(), LogoMark(), OnboardingHeader(), styles, PaginationDots(), styles, FALLBACK_POSTERS (+24 more)
+Cohesion: 0.08
+Nodes (39): App(), GradientText(), LogoMark(), OnboardingHeader(), styles, PaginationDots(), styles, FALLBACK_POSTERS (+31 more)
 
 ### Community 1 - "Movie & TV Details"
-Cohesion: 0.13
-Nodes (28): HeroCarousel(), HERO_HEIGHT, MovieBackdrop(), styles, { width }, Cast(), MovieCast(), MovieGenres() (+20 more)
+Cohesion: 0.11
+Nodes (34): HERO_HEIGHT, MovieBackdrop(), styles, { width }, Cast(), MovieCast(), MovieGenres(), styles (+26 more)
 
 ### Community 2 - "Home Screen Layout"
-Cohesion: 0.13
-Nodes (28): BottomTab(), Stack, HomeComponent(), MovieList(), styles, genreText(), GridSkeleton(), MoviePosterAndInfo() (+20 more)
+Cohesion: 0.15
+Nodes (21): FloatingTabBar(), styles, CATEGORIES, Stack, MainTabs(), PAGES, TABS, @react-navigation/native (+13 more)
 
-### Community 3 - "react-native"
-Cohesion: 0.14
-Nodes (27): styles, { width }, styles, MoviesRow(), styles, styles, styles, styles (+19 more)
+### Community 3 - "DiscoverScreen.js"
+Cohesion: 0.11
+Nodes (31): HeroCarousel(), styles, { width }, HomeComponent(), styles, MediaRow(), styles, MovieList() (+23 more)
 
 ### Community 4 - "Expo App Config"
 Cohesion: 0.09
@@ -94,11 +93,11 @@ Nodes (22): backgroundColor, foregroundImage, adaptiveIcon, backgroundColor, bar
 
 ### Community 5 - "Redux Store & TMDB API"
 Cohesion: 0.13
-Nodes (16): @reduxjs/toolkit@^2.2.6, @reduxjs/toolkit, api, fetchDetailBundle(), fetchDiscover(), MOVIE_PATHS, searchMedia(), TV_PATHS (+8 more)
+Nodes (16): @reduxjs/toolkit@^2.2.6, @reduxjs/toolkit, fetchDetailBundle(), fetchDiscover(), fetchList(), MOVIE_PATHS, searchMedia(), TV_PATHS (+8 more)
 
 ### Community 6 - "dependencies"
-Cohesion: 0.18
-Nodes (11): dependencies, expo-linear-gradient@~13.0.2, react@18.2.0, react-native@0.74.3, react-native-ionicons@^4.6.5, @react-native-masked-view/masked-view@0.3.1, react-native-svg@15.2.0, react-native-vector-icons@^10.1.0 (+3 more)
+Cohesion: 0.17
+Nodes (12): dependencies, expo-linear-gradient@~13.0.2, expo-status-bar@~1.12.1, react@18.2.0, react-native@0.74.3, @react-native-masked-view/masked-view@0.3.1, react-native-vector-icons@^10.1.0, react-native-web@~0.19.10 (+4 more)
 
 ### Community 7 - "Package Metadata"
 Cohesion: 0.22
@@ -108,27 +107,31 @@ Nodes (9): react-native-modal@^13.0.1, devDependencies, @babel/core@^7.20.0, mai
 Cohesion: 0.40
 Nodes (5): scripts, android, ios, start, web
 
-### Community 20 - "DiscoverScreen.js"
-Cohesion: 0.27
-Nodes (7): GenreChips(), styles, DISCOVER_GENRES, genres, ONBOARDING_GENRES, DiscoverScreen(), styles
+### Community 9 - "axios"
+Cohesion: 0.50
+Nodes (3): axios@^1.7.2, axios, api
+
+### Community 14 - "useWatchlist.js"
+Cohesion: 0.73
+Nodes (4): useWatchlist(), getWatchlist(), isSaved(), toggleSaved()
 
 ## Knowledge Gaps
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react-native` connect `react-native` to `Onboarding & Branding`, `Movie & TV Details`, `Home Screen Layout`, `dependencies`, `Package Metadata`, `DiscoverScreen.js`?**
-  _High betweenness centrality (0.143) - this node is a cross-community bridge._
+- **Why does `react-native` connect `Onboarding & Branding` to `Movie & TV Details`, `Home Screen Layout`, `DiscoverScreen.js`, `dependencies`, `Package Metadata`?**
+  _High betweenness centrality (0.146) - this node is a cross-community bridge._
 - **Should `Onboarding & Branding` be split into smaller, more focused modules?**
-  _Cohesion score 0.09292929292929293 - nodes in this community are weakly interconnected._
-- **Why does `react` connect `react-native` to `Onboarding & Branding`, `Movie & TV Details`, `Home Screen Layout`, `dependencies`, `Package Metadata`, `DiscoverScreen.js`?**
-  _High betweenness centrality (0.112) - this node is a cross-community bridge._
+  _Cohesion score 0.08458646616541353 - nodes in this community are weakly interconnected._
+- **Why does `react` connect `Movie & TV Details` to `Onboarding & Branding`, `Home Screen Layout`, `DiscoverScreen.js`, `dependencies`, `Package Metadata`, `useWatchlist.js`?**
+  _High betweenness centrality (0.139) - this node is a cross-community bridge._
 - **Should `Movie & TV Details` be split into smaller, more focused modules?**
-  _Cohesion score 0.12762762762762764 - nodes in this community are weakly interconnected._
-- **Why does `dependencies` connect `dependencies` to `Home Screen Layout`, `Redux Store & TMDB API`, `Package Metadata`, `Axios Dependency`, `Expo Core`, `Blur Effect Library`, `Font Loading`, `Metro Runtime`, `Status Bar`, `React DOM Renderer`, `Async Storage`, `Fast Image`, `Image Zoom Viewer`, `Linear Gradient`, `@react-navigation/stack`, `react-native-pager-view`, `React Native Web`, `react-native-webview@13.8.6`, `react-native-youtube-iframe`?**
-  _High betweenness centrality (0.075) - this node is a cross-community bridge._
+  _Cohesion score 0.11436170212765957 - nodes in this community are weakly interconnected._
+- **Why does `dependencies` connect `dependencies` to `Onboarding & Branding`, `Redux Store & TMDB API`, `Package Metadata`, `axios`, `Expo Core`, `Blur Effect Library`, `Font Loading`, `Metro Runtime`, `React DOM Renderer`, `Async Storage`, `Fast Image`, `Image Zoom Viewer`, `Linear Gradient`, `react-native-ionicons@^4.6.5`, `@react-navigation/stack`, `react-native-pager-view`, `react-native-webview@13.8.6`, `react-native-youtube-iframe`?**
+  _High betweenness centrality (0.076) - this node is a cross-community bridge._
 - **Should `Home Screen Layout` be split into smaller, more focused modules?**
-  _Cohesion score 0.12857142857142856 - nodes in this community are weakly interconnected._
-- **Should `react-native` be split into smaller, more focused modules?**
-  _Cohesion score 0.1414141414141414 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14838709677419354 - nodes in this community are weakly interconnected._
+- **Should `DiscoverScreen.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.10628019323671498 - nodes in this community are weakly interconnected._

@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "components/ui/FloatingTabBar.js": {
-    "mtime": 1795618283.085667,
-    "seen": 1795620735.1034937,
-    "ast_hash": "4f78ecdb2bbd7ebcfa96a2eb70d1c12a",
+    "mtime": 1795620810.3728118,
+    "seen": 1795620849.7634292,
+    "ast_hash": "7c69487f0acd4595975fb8ea14eed3a7",
     "semantic_hash": ""
   },
   "components/ui/Skeleton.js": {
@@ -300,9 +300,9 @@
     "semantic_hash": "03f6d97c84aea04bd177ff137a917109"
   },
   "theme.js": {
-    "mtime": 1795617140.645932,
-    "seen": 1795617417.1551402,
-    "ast_hash": "0aa3cd23f36106fc3db292bc1abfc020",
+    "mtime": 1795620787.8848362,
+    "seen": 1795620849.7634292,
+    "ast_hash": "29f3416a0fd56cbb378a7466891c3b11",
     "semantic_hash": ""
   },
   ".claude/settings.json": {
