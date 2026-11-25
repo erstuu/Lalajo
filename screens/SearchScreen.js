@@ -1,118 +1,126 @@
-import React from "react";
-import { Text, TextInput, View, StyleSheet } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
 
 import Screen from "../components/Screen";
-import { requestSearchMovie } from "../store/features/searchSlice";
-import { orange, lightGray } from "../components/helper/Color";
+import { requestSearchMovie, selectMovieSearch } from "../store/features/searchSlice";
+import { fetchCategory, selectCategory } from "../store/features/catalogSlice";
 import MovieList from "../components/MovieList";
-import {selectMovieSearch} from "../store/features/searchSlice";
-
-import Icon from "react-native-vector-icons/Ionicons";
-import BackIcon from "../components/utils/BackIcon";
-
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigation, useRoute } from "@react-navigation/native";
-
-const RenderHeaderTitle = ({type}) => {
-    const navigation = useNavigation();
-
-    const title = type === "tv" ? "Lajo TV" : "Lalajo";
-
-    return (
-        <View>
-            <View style={{ flexDirection: "row", marginTop: 24 }}>
-                <BackIcon style={{ flex: 1, paddingLeft: 12, alignSelf: "flex-start" }} navigation={navigation} />
-                <Text style={_styles.headerTitle}>{`Search ${title}`}</Text>
-                <View style={{ flex: 1, paddingRight: 12 }}></View>
-            </View>
-            <View style={_styles.titleBar} />
-            <Text style={_styles.subTitle}>
-                {`We'll help you find your favorite ${title.toLowerCase()}. Discover wonderful ${title.toLowerCase()}.`}
-            </Text>
-        </View>
-    );
-}
-
-const RenderSearchText = () => {
-    const dispatch = useDispatch();
-
-    return (
-        <View style={_styles.searchContainer}>
-            <Icon name={"search"} size={20} style={{ margin: 12 }} />
-            <View style={{ alignSelf: "center", flex: 1 }}>
-                <TextInput
-                    style={_styles.searchInput}
-                    placeholder={"Avengers: End Game"}
-                    onChangeText={(keyword) => dispatch(requestSearchMovie({keyword}))}
-                    returnKeyType={"search"}
-                    autoCorrect={false}
-                />
-            </View>
-        </View>
-    );
-};
-
-const RenderListMovies = ({type}) => {
-    const state =  useSelector(selectMovieSearch);
-
-    return <MovieList data={state} type={type} />;
-};
-
-const renderMovies = () => {
-    return state
-};
+import { colors, spacing, type } from "../theme";
 
 const SearchScreen = () => {
     const route = useRoute();
     const { type } = route.params;
+    const media = type === "tv" ? "tv" : "movie";
+    const dispatch = useDispatch();
+    const results = useSelector(selectMovieSearch);
+    const status = useSelector((state) => state.search.status);
+    const popular = useSelector(selectCategory(media, "popular"));
+    const [keyword, setKeyword] = useState("");
+    const timer = useRef(null);
 
-    return(
+    useEffect(() => () => clearTimeout(timer.current), []);
+
+    // Sebelum mengetik, tampilkan film/serial populer sebagai titik mulai
+    useEffect(() => {
+        if (popular.status === "idle" || popular.status === "failed") {
+            dispatch(fetchCategory({ media, category: "popular", page: 1 }));
+        }
+    }, [dispatch, media, popular.status]);
+
+    const isTyping = keyword.trim().length > 0;
+
+    const onChange = (text) => {
+        setKeyword(text);
+        clearTimeout(timer.current);
+        timer.current = setTimeout(() => {
+            if (text.trim()) dispatch(requestSearchMovie({ keyword: text, type }));
+        }, 300);
+    };
+
+    return (
         <Screen>
-            <RenderHeaderTitle />
-            <RenderSearchText />
-            <RenderListMovies type={type}/>
+            <Text style={styles.largeTitle}>Search</Text>
+            <View style={styles.searchBar}>
+                <Ionicons name="search" size={18} color={colors.labelTertiary} style={styles.icon} />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Movies, shows, and more"
+                    placeholderTextColor={colors.labelTertiary}
+                    onChangeText={onChange}
+                    value={keyword}
+                    returnKeyType="search"
+                    autoCorrect={false}
+                />
+                {keyword ? (
+                    <Pressable hitSlop={10} onPress={() => onChange("")}>
+                        <Ionicons name="close-circle" size={18} color={colors.labelTertiary} />
+                    </Pressable>
+                ) : null}
+            </View>
+            {isTyping ? (
+                status === "succeeded" && results.length === 0 ? (
+                    <Text style={styles.empty}>No results for “{keyword}”</Text>
+                ) : (
+                    <MovieList data={results} type={type} loading={status === "loading"} />
+                )
+            ) : (
+                <>
+                    <Text style={styles.sectionTitle}>Popular now</Text>
+                    <MovieList
+                        data={popular.items}
+                        type={type}
+                        loading={popular.status === "loading"}
+                    />
+                </>
+            )}
         </Screen>
     );
 };
 
 export default SearchScreen;
 
-const _styles = StyleSheet.create({
-    headerTitle: {
-        fontSize: 20,
-        flex: 8,
-        textAlign: "center",
-        alignSelf: "center",
+const styles = StyleSheet.create({
+    largeTitle: {
+        ...type.largeTitle,
+        paddingHorizontal: spacing.lg,
+        paddingTop: spacing.sm,
+        marginBottom: spacing.md,
     },
 
-    titleBar: {
-        width: 40,
-        height: 5,
-        backgroundColor: orange,
-        marginTop: 4,
-        marginBottom: 12,
-        alignSelf: "center",
-    },
-
-    subTitle: {
-        margin: 16,
-        marginTop: 5,
-        fontSize: 12,
-        textAlign: "center",
-        alignSelf: "center",
-        width: "70%",
-    },
-
-    searchContainer: {
-        marginHorizontal: 16,
-        backgroundColor: lightGray,
-        borderRadius: 24,
+    searchBar: {
         flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: colors.card,
+        borderRadius: 12,
+        marginHorizontal: spacing.lg,
+        paddingHorizontal: 12,
+        height: 40,
     },
 
-    searchInput: {
-        fontSize: 14,
+    icon: {
+        marginRight: 8,
+    },
+
+    input: {
         flex: 1,
-        marginRight: 12,
+        fontSize: 16,
+        color: colors.label,
+    },
+
+    sectionTitle: {
+        ...type.headline,
+        paddingHorizontal: spacing.lg,
+        marginTop: spacing.xl,
+        marginBottom: spacing.sm,
+    },
+
+    empty: {
+        textAlign: "center",
+        marginTop: 48,
+        color: colors.labelSecondary,
+        fontSize: 15,
     },
 });

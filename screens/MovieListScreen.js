@@ -1,79 +1,75 @@
 import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet} from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import BackIcon from "../components/utils/BackIcon";
-import { orange } from "../components/helper/Color";
 import {useDispatch, useSelector} from "react-redux";
 import Screen from "../components/Screen";
-import {fetchFunctionList, selectAllMovies} from "../store/features/movieSlice";
+import {fetchCategory, selectCategory} from "../store/features/catalogSlice";
 import MovieList from "../components/MovieList";
-
-const RenderTitle = () => {
-    const route = useRoute();
-    const navigation = useNavigation();
-    const { title, type } = route.params;
-
-    return (
-        <View>
-            <View style={{ flexDirection: "row", marginTop: 24 }}>
-                <BackIcon style={{ flex: 1, paddingLeft: 12, alignSelf: "flex-start" }} navigation={navigation} />
-                <Text style={_styles.headerTitle}>{`${title} ${type === "tv" ? "TV Show" : "Movies"}`}</Text>
-                <View style={{ flex: 1, paddingRight: 12 }}></View>
-            </View>
-            <View style={_styles.titleBar} />
-        </View>
-    );
-};
+import { colors, spacing } from "../theme";
 
 const MovieListScreen = () => {
     const route = useRoute();
-    const { title, type, id } = route.params;
+    const type = route.params.type;
+    const id = route.params.id;
+    const title = route.params.title;
+    const media = type === "tv" ? "tv" : "movie";
     const dispatch = useDispatch()
 
-    // Store
-    const movies =  useSelector(selectAllMovies);
+    const category = useSelector(selectCategory(media, id));
     const [page, setPage] = useState(1);
 
     const onReachEnd = () => {
-        setPage((prevPage) => prevPage + 1);
+        if (category.status !== "loading" && category.status !== "loadingMore") {
+            setPage((prevPage) => prevPage + 1);
+        }
     };
 
     useEffect(() => {
-        dispatch(fetchFunctionList({type, title, page}));
-    }, [dispatch, type, title, page]);
+        const needMore = page > category.page;
+        if (category.status === "idle" || (category.status === "succeeded" && needMore)) {
+            dispatch(fetchCategory({ media, category: id, page }));
+        }
+    }, [dispatch, id, media, page, category.status, category.page]);
+
+    const headerTitle = `${title} ${type === "tv" ? "TV Show" : "Movies"}`;
 
     return (
         <Screen>
-            <RenderTitle />
-             <MovieList data={movies[id]} type={type} id={id} onReachEnd={onReachEnd}/>
+            <View style={styles.header}>
+                <BackIcon />
+                <Text style={styles.headerTitle}>{headerTitle}</Text>
+                <View style={styles.spacer} />
+            </View>
+            <MovieList
+                data={category.items}
+                type={type}
+                onReachEnd={onReachEnd}
+                loading={category.status === "loading"}
+            />
         </Screen>
     );
 };
 
 export default MovieListScreen;
 
-const _styles = StyleSheet.create({
+const styles = StyleSheet.create({
+    header: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingHorizontal: spacing.lg,
+        paddingTop: spacing.sm,
+    },
+
     headerTitle: {
-        fontSize: 20,
-        flex: 8,
+        flex: 1,
+        fontSize: 17,
+        fontWeight: "600",
+        color: colors.label,
         textAlign: "center",
-        alignSelf: "center",
     },
 
-    titleBar: {
-        width: 40,
-        height: 5,
-        backgroundColor: orange,
-        marginTop: 4,
-        alignSelf: "center",
-    },
-
-    subTitle: {
-        margin: 16,
-        marginTop: 5,
-        fontSize: 12,
-        textAlign: "center",
-        alignSelf: "center",
-        width: "70%",
+    spacer: {
+        width: 36,
     },
 });

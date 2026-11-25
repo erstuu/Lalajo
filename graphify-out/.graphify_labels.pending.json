@@ -1,0 +1,9 @@
+{
+  "3": "react-native",
+  "6": "dependencies",
+  "20": "DiscoverScreen.js",
+  "21": "@react-navigation/stack",
+  "22": "react-native-pager-view",
+  "24": "react-native-webview@13.8.6",
+  "26": "react-native-youtube-iframe"
+}

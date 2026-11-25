@@ -1,0 +1,497 @@
+{
+  "communities": {
+    "0": [
+      "app_app",
+      "components_onboarding_genrechips",
+      "components_onboarding_genrechips_genrechips",
+      "components_onboarding_genrechips_genres",
+      "components_onboarding_genrechips_rationale_6",
+      "components_onboarding_genrechips_styles",
+      "components_onboarding_gradienttext",
+      "components_onboarding_gradienttext_gradienttext",
+      "components_onboarding_logomark",
+      "components_onboarding_logomark_logomark",
+      "components_onboarding_logomark_rationale_5",
+      "components_onboarding_onboardingheader",
+      "components_onboarding_onboardingheader_onboardingheader",
+      "components_onboarding_onboardingheader_styles",
+      "components_onboarding_paginationdots",
+      "components_onboarding_paginationdots_paginationdots",
+      "components_onboarding_paginationdots_styles",
+      "components_onboarding_postercarousel",
+      "components_onboarding_postercarousel_fallback_posters",
+      "components_onboarding_postercarousel_postercarousel",
+      "components_onboarding_postercarousel_rationale_9",
+      "components_onboarding_postercarousel_styles",
+      "components_onboarding_primarybutton",
+      "components_onboarding_primarybutton_primarybutton",
+      "components_onboarding_primarybutton_styles",
+      "components_onboarding_ratingcard",
+      "components_onboarding_ratingcard_ratingcard",
+      "components_onboarding_ratingcard_styles",
+      "components_onboarding_slidebackground",
+      "components_onboarding_slidebackground_rationale_9",
+      "components_onboarding_slidebackground_slidebackground",
+      "components_onboarding_slidebackground_styles",
+      "components_onboarding_slides",
+      "components_onboarding_slides_rationale_1",
+      "components_onboarding_slides_slides",
+      "components_onboarding_wordmark",
+      "components_onboarding_wordmark_rationale_5",
+      "components_onboarding_wordmark_styles",
+      "components_onboarding_wordmark_wordmark",
+      "ref_expo_linear_gradient",
+      "ref_react_native",
+      "ref_react_native_svg",
+      "screens_onboardingscreen",
+      "screens_onboardingscreen_onboardingscreen",
+      "screens_onboardingscreen_rationale_157",
+      "screens_onboardingscreen_slide",
+      "screens_onboardingscreen_styles",
+      "screens_onboardingscreen_visual",
+      "screens_splashscreen",
+      "screens_splashscreen_lightcurves",
+      "screens_splashscreen_splashscreen",
+      "screens_splashscreen_styles",
+      "service_tmdb_fetchtrendingmovies",
+      "theme",
+      "theme_onboarding",
+      "theme_rationale_43"
+    ],
+    "1": [
+      "components_moviedetail_moviebackdrop",
+      "components_moviedetail_moviebackdrop_hero_height",
+      "components_moviedetail_moviebackdrop_moviebackdrop",
+      "components_moviedetail_moviebackdrop_styles",
+      "components_moviedetail_moviebackdrop_width",
+      "components_moviedetail_moviecast",
+      "components_moviedetail_moviecast_cast",
+      "components_moviedetail_moviecast_moviecast",
+      "components_moviedetail_moviegenres",
+      "components_moviedetail_moviegenres_moviegenres",
+      "components_moviedetail_moviegenres_styles",
+      "components_moviedetail_movieimages",
+      "components_moviedetail_movieimages_movieimages",
+      "components_moviedetail_movieoverview",
+      "components_moviedetail_movieoverview_movieoverview",
+      "components_moviedetail_movieplaybutton",
+      "components_moviedetail_movieplaybutton_pickvideos",
+      "components_moviedetail_movieplaybutton_styles",
+      "components_moviedetail_movieplaybutton_trailerplaybutton",
+      "components_moviedetail_movieplaybutton_trailervideo",
+      "components_moviedetail_movieplaybutton_width",
+      "components_moviedetail_movierating",
+      "components_moviedetail_movierating_movierating",
+      "components_moviedetail_movierating_styles",
+      "components_moviedetail_movierecommendations",
+      "components_moviedetail_movierecommendations_movierecommendations",
+      "components_moviedetail_movierecommendations_recommendations",
+      "components_moviedetail_movietitle",
+      "components_moviedetail_movietitle_movietitle",
+      "components_moviedetail_styles",
+      "components_moviedetail_styles_styles",
+      "screens_moviedetailscreen",
+      "screens_moviedetailscreen_moviedetailscreen",
+      "screens_moviedetailscreen_styles",
+      "screens_tvdetailscreen",
+      "screens_tvdetailscreen_seasons",
+      "screens_tvdetailscreen_styles",
+      "screens_tvdetailscreen_tvdetailscreen",
+      "service_url",
+      "service_url_getimageurl",
+      "theme_colors"
+    ],
+    "2": [
+      "app_bottomtab",
+      "app_js_app",
+      "app_stack",
+      "components_home_herocarousel",
+      "components_home_herocarousel_herocarousel",
+      "components_home_herocarousel_styles",
+      "components_home_herocarousel_width",
+      "components_home_homecomponent",
+      "components_home_homecomponent_homecomponent",
+      "components_home_homecomponent_styles",
+      "components_home_moviesrow",
+      "components_home_moviesrow_moviesrow",
+      "components_home_moviesrow_styles",
+      "components_movieposter",
+      "components_movieposter_movieposter",
+      "components_movieposter_styles",
+      "components_ui_floatingtabbar",
+      "components_ui_floatingtabbar_floatingtabbar",
+      "components_ui_floatingtabbar_styles",
+      "components_ui_skeleton",
+      "components_ui_skeleton_skeleton",
+      "package_dependencies_react_redux",
+      "ref_react",
+      "ref_react_native_safe_area_context",
+      "ref_react_redux",
+      "screens_moviescreen",
+      "screens_moviescreen_categories",
+      "screens_moviescreen_moviescreen",
+      "screens_moviescreen_sub_titles",
+      "screens_tvscreen",
+      "screens_tvscreen_categories",
+      "screens_tvscreen_sub_titles",
+      "screens_tvscreen_tvscreen",
+      "store_features_catalogslice_fetchcategory",
+      "theme_radius",
+      "theme_spacing"
+    ],
+    "3": [
+      "components_helper_genres",
+      "components_helper_genres_genres",
+      "components_movielist",
+      "components_movielist_movielist",
+      "components_movielist_styles",
+      "components_movieposterandinfo",
+      "components_movieposterandinfo_genretext",
+      "components_movieposterandinfo_gridskeleton",
+      "components_movieposterandinfo_movieposterandinfo",
+      "components_movieposterandinfo_styles",
+      "components_screen",
+      "components_screen_screen",
+      "components_screen_styles",
+      "components_utils_backicon",
+      "components_utils_backicon_backicon",
+      "components_utils_backicon_styles",
+      "ref_react_navigation_native",
+      "screens_movielistscreen",
+      "screens_movielistscreen_movielistscreen",
+      "screens_movielistscreen_styles",
+      "screens_searchscreen",
+      "screens_searchscreen_searchscreen",
+      "screens_searchscreen_styles",
+      "service_tmdb_searchmedia",
+      "store_features_catalogslice_selectcategory",
+      "store_features_searchslice",
+      "store_features_searchslice_requestsearchmovie",
+      "store_features_searchslice_searchslice",
+      "store_features_searchslice_selectmoviesearch",
+      "theme_type"
+    ],
+    "4": [
+      "app_adaptiveicon_backgroundcolor",
+      "app_adaptiveicon_foregroundimage",
+      "app_android_adaptiveicon",
+      "app_androidnavigationbar_backgroundcolor",
+      "app_androidnavigationbar_barstyle",
+      "app_expo",
+      "app_expo_android",
+      "app_expo_androidnavigationbar",
+      "app_expo_icon",
+      "app_expo_ios",
+      "app_expo_name",
+      "app_expo_orientation",
+      "app_expo_slug",
+      "app_expo_splash",
+      "app_expo_userinterfacestyle",
+      "app_expo_version",
+      "app_expo_web",
+      "app_ios_supportstablet",
+      "app_json_app",
+      "app_splash_backgroundcolor",
+      "app_splash_image",
+      "app_splash_resizemode",
+      "app_web_favicon"
+    ],
+    "5": [
+      "package_dependencies_reduxjs_toolkit",
+      "ref_reduxjs_toolkit",
+      "service_api",
+      "service_api_api",
+      "service_tmdb",
+      "service_tmdb_fetchdetailbundle",
+      "service_tmdb_fetchlist",
+      "service_tmdb_movie_paths",
+      "service_tmdb_mustwatchparams",
+      "service_tmdb_tv_paths",
+      "store_configurestore",
+      "store_configurestore_store",
+      "store_features_catalogslice",
+      "store_features_catalogslice_catalogslice",
+      "store_features_catalogslice_keyof",
+      "store_features_catalogslice_newcategory",
+      "store_features_moviedetailslice",
+      "store_features_moviedetailslice_fetchmoviedetail",
+      "store_features_moviedetailslice_initialstate",
+      "store_features_moviedetailslice_moviedetailslice",
+      "store_features_moviedetailslice_selectmoviedetail"
+    ],
+    "6": [
+      "package_dependencies",
+      "package_dependencies_expo_linear_gradient",
+      "package_dependencies_react",
+      "package_dependencies_react_native",
+      "package_dependencies_react_native_pager_view",
+      "package_dependencies_react_native_svg",
+      "package_dependencies_react_native_webview",
+      "package_dependencies_react_native_youtube_iframe",
+      "package_dependencies_react_navigation_native",
+      "ref_react_native_pager_view",
+      "ref_react_native_webview",
+      "ref_react_native_youtube_iframe"
+    ],
+    "7": [
+      "package",
+      "package_dependencies_react_native_ionicons",
+      "package_devdependencies",
+      "package_devdependencies_babel_core",
+      "package_main",
+      "package_name",
+      "package_private",
+      "package_version",
+      "ref_babel_core",
+      "ref_react_native_ionicons"
+    ],
+    "8": [
+      "package_scripts",
+      "package_scripts_android",
+      "package_scripts_ios",
+      "package_scripts_start",
+      "package_scripts_web"
+    ],
+    "9": [
+      "package_dependencies_axios",
+      "ref_axios"
+    ],
+    "10": [
+      "package_dependencies_expo",
+      "ref_expo"
+    ],
+    "11": [
+      "package_dependencies_expo_blur",
+      "ref_expo_blur"
+    ],
+    "12": [
+      "package_dependencies_expo_font",
+      "ref_expo_font"
+    ],
+    "13": [
+      "package_dependencies_expo_metro_runtime",
+      "ref_expo_metro_runtime"
+    ],
+    "14": [
+      "package_dependencies_expo_status_bar",
+      "ref_expo_status_bar"
+    ],
+    "15": [
+      "package_dependencies_react_dom",
+      "ref_react_dom"
+    ],
+    "16": [
+      "package_dependencies_react_native_async_storage_async_storage",
+      "ref_react_native_async_storage_async_storage"
+    ],
+    "17": [
+      "package_dependencies_react_native_fast_image",
+      "ref_react_native_fast_image"
+    ],
+    "18": [
+      "package_dependencies_react_native_image_zoom_viewer",
+      "ref_react_native_image_zoom_viewer"
+    ],
+    "19": [
+      "package_dependencies_react_native_linear_gradient",
+      "ref_react_native_linear_gradient"
+    ],
+    "20": [
+      "package_dependencies_react_native_masked_view_masked_view",
+      "ref_react_native_masked_view_masked_view"
+    ],
+    "21": [
+      "package_dependencies_react_native_modal",
+      "ref_react_native_modal"
+    ],
+    "22": [
+      "package_dependencies_react_native_vector_icons",
+      "ref_react_native_vector_icons"
+    ],
+    "23": [
+      "package_dependencies_react_native_web",
+      "ref_react_native_web"
+    ],
+    "24": [
+      "package_dependencies_react_navigation_stack",
+      "ref_react_navigation_stack"
+    ],
+    "25": [
+      "babel_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.07922077922077922,
+    "1": 0.15,
+    "2": 0.12063492063492064,
+    "3": 0.13333333333333333,
+    "4": 0.08695652173913043,
+    "5": 0.1380952380952381,
+    "6": 0.16666666666666666,
+    "7": 0.2222222222222222,
+    "8": 0.4,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0
+  },
+  "gods": [
+    {
+      "id": "ref_react_native",
+      "label": "react-native",
+      "degree": 38
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 33
+    },
+    {
+      "id": "theme_colors",
+      "label": "colors",
+      "degree": 21
+    },
+    {
+      "id": "service_url_getimageurl",
+      "label": "getImageUrl()",
+      "degree": 19
+    },
+    {
+      "id": "screens_tvdetailscreen_tvdetailscreen",
+      "label": "TVDetailScreen()",
+      "degree": 16
+    },
+    {
+      "id": "screens_moviedetailscreen_moviedetailscreen",
+      "label": "MovieDetailScreen()",
+      "degree": 15
+    },
+    {
+      "id": "theme_onboarding",
+      "label": "onboarding",
+      "degree": 13
+    },
+    {
+      "id": "ref_react_navigation_native",
+      "label": "@react-navigation/native",
+      "degree": 13
+    },
+    {
+      "id": "app_expo",
+      "label": "expo",
+      "degree": 12
+    },
+    {
+      "id": "components_ui_skeleton_skeleton",
+      "label": "Skeleton()",
+      "degree": 11
+    }
+  ],
+  "surprises": [
+    {
+      "source": "PosterCarousel()",
+      "target": "getImageUrl()",
+      "source_files": [
+        "components/onboarding/PosterCarousel.js",
+        "service/url.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "MovieDetailScreen()",
+      "target": "Skeleton()",
+      "source_files": [
+        "screens/MovieDetailScreen.js",
+        "components/ui/Skeleton.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "MovieDetailScreen()",
+      "target": "BackIcon()",
+      "source_files": [
+        "screens/MovieDetailScreen.js",
+        "components/utils/BackIcon.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "MovieDetailScreen()",
+      "target": "fetchMovieDetail",
+      "source_files": [
+        "screens/MovieDetailScreen.js",
+        "store/features/movieDetailSlice.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "TVDetailScreen()",
+      "target": "Skeleton()",
+      "source_files": [
+        "screens/TVDetailScreen.js",
+        "components/ui/Skeleton.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `react-native` connect `Onboarding & Branding` to `Movie & TV Details`, `Home Screen Layout`, `Browse & Genre Grid`, `Navigation & UI Dependencies`, `Package Metadata`?",
+      "why": "High betweenness centrality (0.145) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Onboarding & Branding` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07922077922077922 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `react` connect `Home Screen Layout` to `Onboarding & Branding`, `Movie & TV Details`, `Browse & Genre Grid`, `Navigation & UI Dependencies`, `Package Metadata`?",
+      "why": "High betweenness centrality (0.113) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Home Screen Layout` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12063492063492064 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Navigation & UI Dependencies` to `Home Screen Layout`, `Redux Store & TMDB API`, `Package Metadata`, `Axios Dependency`, `Expo Core`, `Blur Effect Library`, `Font Loading`, `Metro Runtime`, `Status Bar`, `React DOM Renderer`, `Async Storage`, `Fast Image`, `Image Zoom Viewer`, `Linear Gradient`, `Masked View`, `Modal Library`, `Vector Icons`, `React Native Web`, `Stack Navigator`?",
+      "why": "High betweenness centrality (0.079) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Browse & Genre Grid` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Expo App Config` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

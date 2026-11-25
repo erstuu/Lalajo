@@ -1,47 +1,56 @@
 import { StyleSheet } from "react-native";
-import { gray } from "../helper/Color";
+import { colors, radius } from "../../theme";
 
 export const Styles = StyleSheet.create({
     titleText: {
-        fontSize: 18,
-        marginBottom: 4,
+        fontSize: 17,
+        fontWeight: "600",
+        color: colors.label,
+        marginBottom: 8,
         marginTop: 24,
     },
 
+    textOverview: {
+        fontSize: 15,
+        lineHeight: 21,
+        color: colors.labelSecondary,
+    },
+
     bottomText: {
-        width: 75,
-        fontSize: 14,
-        marginTop: 4,
+        width: 64,
+        fontSize: 12,
+        color: colors.labelSecondary,
+        marginTop: 6,
     },
 
     castImageContainer: {
         overflow: "hidden",
-        height: 85,
-        width: 75,
-        borderRadius: 10,
-        marginRight: 8,
-        backgroundColor: gray,
+        height: 64,
+        width: 64,
+        borderRadius: 32,
+        marginRight: 12,
+        backgroundColor: colors.card,
     },
 
     imagePlaceholder: {
-        backgroundColor: gray,
+        backgroundColor: colors.card,
     },
 
     castImage: {
-        width: 75,
-        height: 110,
+        width: 64,
+        height: 64,
     },
 
     movieImages: {
         height: 100,
         marginRight: 8,
-        borderRadius: 10,
+        borderRadius: radius.md,
     },
 
     movieRecommImages: {
-        height: 150,
-        width: 100,
+        height: 165,
+        width: 110,
         marginRight: 8,
-        borderRadius: 10,
+        borderRadius: radius.md,
     },
 });

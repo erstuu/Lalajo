@@ -1,52 +1,81 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-// Component
 import MoviePoster from "../MoviePoster";
-
-// Helper
-import { orange } from "../helper/Color";
-import { normalize } from "../helper/FontSize";
+import Skeleton from "../ui/Skeleton";
+import { colors, spacing } from "../../theme";
 
 const MoviesRow = ({ id, title, type, data }) => {
     const navigation = useNavigation();
+    const loading = !data || data.length === 0;
+
     return (
-        <View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text style={Styles.text}>{title}</Text>
-                <TouchableWithoutFeedback
+        <View style={styles.container}>
+            <View style={styles.headerRow}>
+                <Text style={styles.title}>{title}</Text>
+                <Pressable
                     onPress={() => navigation.navigate("MovieList", { id, title, type })}
+                    hitSlop={12}
                 >
-                    <Text style={Styles.textMore}>More</Text>
-                </TouchableWithoutFeedback>
+                    <Text style={styles.more}>See All</Text>
+                </Pressable>
             </View>
-            <FlatList
-                horizontal
-                data={data}
-                renderItem={({ item }) => <MoviePoster item={item} type={type} />}
-                style={{ margin: 8, marginTop: 10 }}
-                showsHorizontalScrollIndicator={false}
-            />
+            {loading ? (
+                <View style={styles.skeletonRow}>
+                    {[0, 1, 2].map((i) => (
+                        <Skeleton key={i} style={styles.skeletonPoster} />
+                    ))}
+                </View>
+            ) : (
+                <FlatList
+                    horizontal
+                    data={data}
+                    renderItem={({ item }) => <MoviePoster item={item} type={type} />}
+                    keyExtractor={(item) => String(item.id)}
+                    showsHorizontalScrollIndicator={false}
+                />
+            )}
         </View>
     );
 };
 
 export default MoviesRow;
 
-const Styles = StyleSheet.create({
-    text: {
-        fontSize: normalize(18),
-        fontWeight: "bold",
-        margin: 16,
-        marginBottom: 0,
+const styles = StyleSheet.create({
+    container: {
+        marginBottom: spacing.xl,
     },
 
-    textMore: {
-        fontSize: normalize(13),
-        margin: 16,
-        marginBottom: 0,
-        alignSelf: "flex-end",
-        color: orange,
+    headerRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        paddingHorizontal: spacing.md,
+    },
+
+    title: {
+        fontSize: 20,
+        fontWeight: "700",
+        color: colors.label,
+        marginBottom: 10,
+    },
+
+    more: {
+        fontSize: 13,
+        fontWeight: "500",
+        color: colors.accent,
+        marginBottom: 10,
+    },
+
+    skeletonRow: {
+        flexDirection: "row",
+        paddingHorizontal: spacing.sm,
+    },
+
+    skeletonPoster: {
+        width: 132,
+        height: 198,
+        marginHorizontal: 6,
     },
 });

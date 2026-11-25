@@ -1,73 +1,62 @@
-import React, { useEffect } from "react";
-import { ScrollView, Text, View, StyleSheet, RefreshControl } from "react-native";
-import { StatusBar } from 'expo-status-bar';
+import React from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 // Components
 import Screen from "../Screen";
 import MoviesRow from "./MoviesRow";
-import MovieHeader from "./MovieHeader";
+import HeroCarousel from "./HeroCarousel";
 
 // Helper
-import { normalize } from "../helper/FontSize";
-import { orange } from "../helper/Color";
+import { spacing, type as typeScale } from "../../theme";
 
-const Title = ({type}) => {
-
-    const title = type === "tv" ? "Lajo TV" : "Lalajo";
-    return (
-        <View>
-            <Text style={Styles.screenTitle}>{title}</Text>
-            <View style={Styles.titleBar} />
-        </View>
-    );
-};
-
-const Container = ({data, subTitle, type}) => {
-    const movieTypesData = [
-        { id: "popular", title: subTitle[0], data: data.popular },
-        { id: "topRated", title: subTitle[1], data: data.topRated },
-        { id: "mustWatch", title: subTitle[2], data: data.mustWatch },
-        { id: "upcoming", title: subTitle[3], data: data.upcoming },
+const HomeComponent = ({ data, subTitle, type, title = "Lalajo" }) => {
+    const insets = useSafeAreaInsets();
+    const bottomSpace = insets.bottom + 66; // pill (78 dari bawah) + jarak, dikurangi margin baris (24)
+    const shelves = [
+        { id: "popular", title: subTitle[0] },
+        { id: "topRated", title: subTitle[1] },
+        { id: "mustWatch", title: subTitle[2] },
+        { id: type === "tv" ? "onTheAir" : "upcoming", title: subTitle[3] },
     ];
 
     return (
-        <ScrollView
-            showsVerticalScrollIndicator={false}
-        >
-            <Title type={type} />
-            {movieTypesData.map(({ id, title, data }, index) => (
-                <MoviesRow key={index} id={id} title={title} type={"movie"} data={data} />
-            ))}
-        </ScrollView>
-    );
-};
-
-const HomeComponent = ({data, subTitle, type}) => {
-    return(
         <Screen>
-            <StatusBar style="dark-content" />
-            <MovieHeader type={type} />
-            <Container data={data} subTitle={subTitle} type={type}/>
+            <StatusBar style="light" />
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: bottomSpace }}
+            >
+                <View style={styles.header}>
+                    <Text style={styles.largeTitle}>{title}</Text>
+                </View>
+                <HeroCarousel items={data.nowPlaying || data.popular} type={type} />
+                <View style={styles.shelves}>
+                    {shelves.map(({ id, title }) => (
+                        <MoviesRow key={id} id={id} title={title} type={type} data={data[id]} />
+                    ))}
+                </View>
+            </ScrollView>
         </Screen>
     );
 };
 
 export default HomeComponent;
 
-const Styles = StyleSheet.create({
-    screenTitle: {
-        fontSize: normalize(30),
-        fontWeight: "bold",
-        margin: 16,
-        marginBottom: 0,
+const styles = StyleSheet.create({
+    header: {
+        alignItems: "center",
+        paddingHorizontal: spacing.lg,
+        paddingTop: spacing.sm,
     },
 
-    titleBar: {
-        width: 30,
-        height: 5,
-        backgroundColor: orange,
-        marginTop: 2,
-        marginBottom: 12,
-        marginLeft: 16,
+    largeTitle: {
+        ...typeScale.largeTitle,
+    },
+
+    shelves: {
+        paddingLeft: spacing.md,
+        marginTop: spacing.xl,
     },
 });

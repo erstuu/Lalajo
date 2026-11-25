@@ -1,14 +1,16 @@
 // store/configureStore.js
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './features/counterSlice';
-import movieReducer from './features/movieSlice';
+import catalogReducer from './features/catalogSlice';
 import MovieDetailReducer from './features/movieDetailSlice';
+import searchReducer from './features/searchSlice';
+import discoverReducer from './features/discoverSlice';
 
 const store = configureStore({
     reducer: {
-        counter: counterReducer,
-        movies: movieReducer,
+        catalog: catalogReducer,
         movieDetail: MovieDetailReducer,
+        search: searchReducer,
+        discover: discoverReducer,
     },
 });
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 import { Styles } from "./Styles";
 
@@ -11,11 +11,11 @@ const MovieOverview = ({ overview }) => {
     return (
         <View>
             <Text style={Styles.titleText}>Overview</Text>
-            <TouchableWithoutFeedback onPress={() => setTextShown(!textShown)}>
+            <Pressable onPress={() => setTextShown(!textShown)}>
                 <Text numberOfLines={textShown ? 0 : 3} style={Styles.textOverview}>
                     {overview}
                 </Text>
-            </TouchableWithoutFeedback>
+            </Pressable>
         </View>
     );
 };

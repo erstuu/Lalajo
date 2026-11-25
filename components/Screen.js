@@ -1,32 +1,29 @@
 import React from "react";
-import {StatusBar, View, SafeAreaView, StyleSheet, ScrollView} from "react-native";
-import { white } from "./helper/Color";
-
-const Container = ({ children }) => {
-    return (
-        <SafeAreaView style={_styles.container}>
-            {children}
-        </SafeAreaView>
-    );
-};
+import { StyleSheet, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../theme";
 
 const Screen = ({ children }) => {
     return (
-        <View style={{ flex: 1, backgroundColor: white }}>
-            <StatusBar barStyle="dark-content" />
-            <Container>
+        <View style={styles.root}>
+            <StatusBar style="light" />
+            <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
                 {children}
-            </Container>
+            </SafeAreaView>
         </View>
     );
 };
 
 export default Screen;
 
-const _styles = StyleSheet.create({
-    container: {
+const styles = StyleSheet.create({
+    root: {
         flex: 1,
-        backgroundColor: white,
-        marginTop: StatusBar.currentHeight,
+        backgroundColor: colors.surface,
+    },
+
+    safe: {
+        flex: 1,
     },
 });
