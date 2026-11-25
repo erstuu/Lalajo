@@ -30,22 +30,36 @@ Lalajo is a movie & TV show catalog app built with React Native (Expo). Browse w
 ## Project structure
 
 ```
-├── App.js                  # Navigation (Stack + BottomTab), dark theme
+├── App.js                  # Root: providers + splash/onboarding gate
 ├── theme.js                # Design tokens (colors, spacing, radius, type)
-├── screens/                # MovieScreen, TvScreen, Movie/TVDetail, MovieList, Search, WebView
+├── navigation/             # Stack (AppNavigator), pager tabs (MainTabs), routes.js, tabs.js
+├── screens/                # One screen per file
 ├── components/
-│   ├── home/               # HomeComponent, HeroCarousel, MoviesRow
-│   ├── movieDetail/        # Backdrop, Title, Rating, Genres, PlayButton, Cast, ...
-│   ├── ui/                 # Skeleton
-│   └── helper/             # Genres map
+│   ├── home/               # HomeComponent, HeroCarousel, MediaRow
+│   ├── movieDetail/        # Backdrop, Title, Rating, Genres, Cast, SaveButton, ...
+│   ├── onboarding/         # Slides, poster carousel, saved card
+│   ├── ui/                 # Shared: Skeleton, FloatingTabBar, BackIcon, chips, buttons
+│   ├── MovieList.js        # Shared list + MoviePosterAndInfo
+│   └── MoviePoster.js      # Row poster used by MediaRow
+├── constants/              # Genres, categories, onboarding slides
+├── hooks/                  # Onboarding gate, watchlist, trending movies
 ├── service/
 │   ├── api.js              # Axios instance (TMDB base URL, API key from env)
-│   ├── tmdb.js             # Endpoints: lists, detail bundle, search
-│   └── url.js              # Image URL helper
+│   ├── tmdb.js             # Endpoints: lists, detail bundle, search, discover
+│   ├── url.js              # Image URL helper
+│   └── watchlist.js        # AsyncStorage watchlist
 └── store/
     ├── configureStore.js
-    └── features/           # catalogSlice (per media+category cache), movieDetailSlice, searchSlice
+    └── features/           # catalogSlice, movieDetailSlice, searchSlice, discoverSlice
 ```
+
+## Conventions
+
+- Feature folders under `components/`; components shared across features live in `components/ui/`.
+- All network and storage access goes through `service/`; shared state goes through `store/` slices. Components never call Axios or AsyncStorage directly.
+- Route names come only from `navigation/routes.js`; tab order and pages come only from `navigation/tabs.js`.
+- Styling uses the tokens in `theme.js` — no hardcoded colors, spacing, or radii.
+- Static data (genres, categories, onboarding slides) lives in `constants/`.
 
 ## Getting started
 
@@ -74,5 +88,5 @@ Scan the QR code with the **Expo Go** app.
 ## Known limitations / roadmap
 
 - Season detail (episode list) not implemented yet
-- Watchlist / favorites not implemented
+- Watchlist is stored on-device only (AsyncStorage), no account sync
 - TMDB API key was previously committed in source — rotate your key if you forked early history
