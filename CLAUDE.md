@@ -8,3 +8,14 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 - A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.
+
+## struktur
+
+- `screens/` satu layar per file; `components/<fitur>/` untuk komponen yang hanya dipakai fitur itu (`home/`, `movieDetail/`, `onboarding/`).
+- `components/ui/` untuk komponen bersama lintas fitur; jangan taruh di `components/` akar.
+- `constants/` untuk data statis (genre, kategori, slide onboarding).
+- Semua akses data lewat `service/`; state bersama lewat `store/` (Redux Toolkit slices). Komponen tidak memanggil Axios/AsyncStorage langsung.
+- `hooks/` untuk logika state yang dipakai ulang (gerbang onboarding, watchlist, trending).
+- Nama rute hanya dari `navigation/routes.js` (tanpa import); jangan tulis string rute di tempat lain.
+- Urutan/halaman tab dari `navigation/tabs.js`; jangan menduplikasi daftar tab.
+- Gaya dari token di `theme.js`; jangan hardcode warna, spacing, atau radius.
