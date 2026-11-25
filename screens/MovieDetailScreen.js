@@ -10,6 +10,7 @@ import MovieRating from "../components/movieDetail/MovieRating";
 import BackIcon from "../components/ui/BackIcon";
 import SaveButton from "../components/movieDetail/SaveButton";
 import Skeleton from "../components/ui/Skeleton";
+import { useWatchlist } from "../hooks/useWatchlist";
 
 import MovieGenres from "../components/movieDetail/MovieGenres";
 import MovieOverview from "../components/movieDetail/MovieOverview";
@@ -35,6 +36,12 @@ const MovieDetailScreen = ({ route }) => {
         detail.release_date ? detail.release_date.slice(0, 4) : null,
         detail.runtime ? `${detail.runtime} min` : null,
     ].filter(Boolean).join("  •  ");
+    const { saved, onToggle } = useWatchlist({
+        media: "movie",
+        id,
+        title: detail.title,
+        poster_path: detail.poster_path,
+    });
 
     return (
         <View style={styles.root}>
@@ -87,15 +94,7 @@ const MovieDetailScreen = ({ route }) => {
                 />
             ) : null}
             {movie.isLoaded ? (
-                <SaveButton
-                    item={{
-                        media: "movie",
-                        id,
-                        title: detail.title,
-                        poster_path: detail.poster_path,
-                    }}
-                    style={styles.save}
-                />
+                <SaveButton saved={saved} onPress={onToggle} style={styles.save} />
             ) : null}
             <BackIcon style={styles.back} color={colors.label} />
         </View>

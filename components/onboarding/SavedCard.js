@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { fetchTrendingMovies } from "../../service/tmdb";
-import { getImageUrl } from "../../service/url";
+import { useTrendingMovies } from "../../hooks/useTrendingMovies";
 import { colors, onboarding } from "../../theme";
 
 const CARD_WIDTH = 132;
@@ -11,26 +10,9 @@ const CARD_HEIGHT = 198;
 
 // Poster yang sudah disimpan: kartu bertumpuk dengan badge bookmark dan penanda watchlist.
 const SavedCard = () => {
-    const [poster, setPoster] = useState({ title: "Orbit", uri: null });
+    const trending = useTrendingMovies();
     const [failed, setFailed] = useState(false);
-
-    useEffect(() => {
-        let alive = true;
-        fetchTrendingMovies()
-            .then((results) => {
-                const movie = results.find((item) => item.poster_path);
-                if (alive && movie) {
-                    setPoster({
-                        title: movie.title,
-                        uri: getImageUrl(movie.poster_path, "uri", "w342").uri,
-                    });
-                }
-            })
-            .catch(() => {});
-        return () => {
-            alive = false;
-        };
-    }, []);
+    const poster = trending[0] || { title: "Orbit", uri: null };
 
     const showImage = poster.uri && !failed;
 

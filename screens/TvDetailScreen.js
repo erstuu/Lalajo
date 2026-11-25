@@ -15,6 +15,7 @@ import MovieRecommendations from "../components/movieDetail/MovieRecommendations
 import BackIcon from "../components/ui/BackIcon";
 import SaveButton from "../components/movieDetail/SaveButton";
 import Skeleton from "../components/ui/Skeleton";
+import { useWatchlist } from "../hooks/useWatchlist";
 import { getImageUrl } from "../service/url";
 import { colors, radius, spacing } from "../theme";
 
@@ -68,6 +69,12 @@ const TvDetailScreen = ({ route }) => {
         detail.episode_run_time?.[0] ? `${detail.episode_run_time[0]} min` : null,
         detail.number_of_seasons ? `${detail.number_of_seasons} seasons` : null,
     ].filter(Boolean).join("  •  ");
+    const { saved, onToggle } = useWatchlist({
+        media: "tv",
+        id,
+        title: detail.name,
+        poster_path: detail.poster_path,
+    });
 
     return (
         <View style={styles.root}>
@@ -116,15 +123,7 @@ const TvDetailScreen = ({ route }) => {
                 />
             ) : null}
             {show.isLoaded ? (
-                <SaveButton
-                    item={{
-                        media: "tv",
-                        id,
-                        title: detail.name,
-                        poster_path: detail.poster_path,
-                    }}
-                    style={styles.save}
-                />
+                <SaveButton saved={saved} onPress={onToggle} style={styles.save} />
             ) : null}
             <BackIcon style={styles.back} color={colors.label} />
         </View>

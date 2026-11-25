@@ -1,34 +1,12 @@
-import { useEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { isSaved, toggleSaved } from "../../service/watchlist";
 import { colors } from "../../theme";
 
-// Tombol bookmark di detail film dan serial untuk menyimpan judul ke watchlist.
-const SaveButton = ({ item, style }) => {
-    const [saved, setSaved] = useState(false);
-
-    useEffect(() => {
-        let alive = true;
-        isSaved(item)
-            .then((value) => {
-                if (alive) setSaved(value);
-            })
-            .catch(() => {});
-        return () => {
-            alive = false;
-        };
-    }, [item.media, item.id]);
-
-    const onToggle = () => {
-        toggleSaved(item)
-            .then(setSaved)
-            .catch(() => {});
-    };
-
+// Tombol bookmark presentasional; status dan aksinya datang dari useWatchlist.
+const SaveButton = ({ saved, onPress, style }) => {
     return (
         <Pressable
-            onPress={onToggle}
+            onPress={onPress}
             style={[styles.button, style]}
             hitSlop={12}
             accessibilityRole="button"

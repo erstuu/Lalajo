@@ -1,9 +1,8 @@
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Defs, LinearGradient as SvgGradient, Path, Stop } from "react-native-svg";
-import { fetchTrendingMovies } from "../../service/tmdb";
-import { getImageUrl } from "../../service/url";
+import { useTrendingMovies } from "../../hooks/useTrendingMovies";
 import { colors, onboarding } from "../../theme";
 
 const FALLBACK_POSTERS = [
@@ -21,29 +20,11 @@ const CARD_HEIGHT = 156;
 // Lima poster film trending dari TMDB, disusun melengkung dengan poster tengah paling besar.
 const PosterCarousel = () => {
     const id = `poster-glow-${useId().replace(/[:]/g, "")}`;
-    const [posters, setPosters] = useState(FALLBACK_POSTERS);
+    const trending = useTrendingMovies();
     const [failed, setFailed] = useState({});
-
-    useEffect(() => {
-        let alive = true;
-        fetchTrendingMovies()
-            .then((results) => {
-                const withPoster = results
-                    .filter((movie) => movie.poster_path)
-                    .slice(0, POSTER_COUNT)
-                    .map((movie) => ({
-                        id: String(movie.id),
-                        title: movie.title,
-                        kind: "MOVIE",
-                        uri: getImageUrl(movie.poster_path, "uri", "w342").uri,
-                    }));
-                if (alive && withPoster.length) setPosters(withPoster);
-            })
-            .catch(() => {});
-        return () => {
-            alive = false;
-        };
-    }, []);
+    const posters = trending.length
+        ? trending.slice(0, POSTER_COUNT).map((poster) => ({ ...poster, kind: "MOVIE" }))
+        : FALLBACK_POSTERS;
 
     const center = (posters.length - 1) / 2;
 

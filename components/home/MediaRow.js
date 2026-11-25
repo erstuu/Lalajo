@@ -32,7 +32,17 @@ const MediaRow = ({ id, title, type, data }) => {
                 <FlatList
                     horizontal
                     data={data}
-                    renderItem={({ item }) => <MoviePoster item={item} type={type} />}
+                    renderItem={({ item }) => (
+                        <MoviePoster
+                            item={item}
+                            onPress={() =>
+                                navigation.navigate(
+                                    type === "tv" ? routes.tvDetail : routes.movieDetail,
+                                    { id: item.id }
+                                )
+                            }
+                        />
+                    )}
                     keyExtractor={(item) => String(item.id)}
                     showsHorizontalScrollIndicator={false}
                 />
