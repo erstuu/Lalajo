@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { getImageUrl } from "../../service/url";
 import { colors, radius, spacing } from "../../theme";
 import Skeleton from "../ui/Skeleton";
+import { routes } from "../../navigation/routes";
 import MovieRating from "../movieDetail/MovieRating";
 
 const { width } = Dimensions.get("window");
@@ -69,7 +70,7 @@ const HeroCarousel = ({ items, type }) => {
                 style={{ marginTop: spacing.lg }}
                 renderItem={({ item }) => (
                     <Pressable
-                        onPress={() => navigation.push(type === "tv" ? "TvDetail" : "MovieDetail", { id: item.id })}
+                        onPress={() => navigation.push(type === "tv" ? routes.tvDetail : routes.movieDetail, { id: item.id })}
                         style={({ pressed }) => [styles.card, pressed && { opacity: 0.9 }]}
                     >
                         <Image

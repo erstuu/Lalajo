@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import ScreenContainer from "../components/ScreenContainer";
 import { getImageUrl } from "../service/url";
 import { getWatchlist } from "../service/watchlist";
+import { routes } from "../navigation/routes";
 import { colors, radius, spacing, type as typeScale } from "../theme";
 
 // Daftar judul yang disimpan; dimuat ulang tiap layar kembali difokuskan.
@@ -52,7 +53,7 @@ const WatchlistScreen = () => {
                         <Pressable
                             onPress={() =>
                                 navigation.navigate(
-                                    item.media === "tv" ? "TvDetail" : "MovieDetail",
+                                    item.media === "tv" ? routes.tvDetail : routes.movieDetail,
                                     { id: item.id }
                                 )
                             }

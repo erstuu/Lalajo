@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import MoviePoster from "../MoviePoster";
 import Skeleton from "../ui/Skeleton";
+import { routes } from "../../navigation/routes";
 import { colors, spacing } from "../../theme";
 
 const MediaRow = ({ id, title, type, data }) => {
@@ -15,7 +16,7 @@ const MediaRow = ({ id, title, type, data }) => {
             <View style={styles.headerRow}>
                 <Text style={styles.title}>{title}</Text>
                 <Pressable
-                    onPress={() => navigation.navigate("MovieList", { id, title, type })}
+                    onPress={() => navigation.navigate(routes.movieList, { id, title, type })}
                     hitSlop={12}
                 >
                     <Text style={styles.more}>See All</Text>

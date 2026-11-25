@@ -20,14 +20,9 @@ import TvDetailScreen from "./screens/TvDetailScreen";
 import SplashScreen from './screens/SplashScreen';
 import OnboardingScreen from './screens/OnboardingScreen';
 import { PAGES } from "./navigation/tabs";
+import { routes } from "./navigation/routes";
 
 const ONBOARDED_KEY = "lalajo:onboarded:v2";
-
-// Screen Name
-const movies = 'Movies';
-const movieList = 'MovieList';
-const movieDetail = 'MovieDetail';
-const tabStack = "bottomTab"
 
 const Stack = createStackNavigator();
 
@@ -56,7 +51,7 @@ function BottomTab() {
                 index={index}
                 onSelect={(i) => pager.current?.setPage(i)}
                 onSearch={() =>
-                    navigation.navigate("Search", { type: PAGES[index]?.type || "movie" })
+                    navigation.navigate(routes.search, { type: PAGES[index]?.type || "movie" })
                 }
             />
         </View>
@@ -100,23 +95,23 @@ export default function App() {
                     },
                 }}>
                     <Stack.Navigator
-                        initialRouteName={tabStack}
+                        initialRouteName={routes.tabs}
                         screenOptions={{
                             headerShown: false,
                             cardStyle: { backgroundColor: colors.surface },
                         }}>
                         <Stack.Screen
-                            name="Search"
+                            name={routes.search}
                             component={SearchScreen}
                             options={{
                                 cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
                                 gestureDirection: "vertical",
                             }} />
-                        <Stack.Screen name={tabStack} component={BottomTab} />
-                        <Stack.Screen name={movies} component={MovieScreen} />
-                        <Stack.Screen name={movieList} component={MovieListScreen} />
-                        <Stack.Screen name={movieDetail} component={MovieDetailScreen} />
-                        <Stack.Screen name="TvDetail" component={TvDetailScreen} />
+                        <Stack.Screen name={routes.tabs} component={BottomTab} />
+                        <Stack.Screen name={routes.movies} component={MovieScreen} />
+                        <Stack.Screen name={routes.movieList} component={MovieListScreen} />
+                        <Stack.Screen name={routes.movieDetail} component={MovieDetailScreen} />
+                        <Stack.Screen name={routes.tvDetail} component={TvDetailScreen} />
                     </Stack.Navigator>
                     </NavigationContainer>
                 ) : phase === "splash" ? (

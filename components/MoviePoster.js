@@ -3,19 +3,18 @@ import { Image, Pressable, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { getImageUrl } from "../service/url";
+import { routes } from "../navigation/routes";
 import { colors, radius } from "../theme";
 
 const MoviePoster = ({ item, type }) => {
     const navigation = useNavigation();
     return (
         <Pressable
-            onPress={() => {
-                if (type === "tv") {
-                    navigation.navigate("TvDetail", { id: item.id });
-                } else {
-                    navigation.navigate("MovieDetail", { id: item.id });
-                }
-            }}
+            onPress={() =>
+                navigation.navigate(type === "tv" ? routes.tvDetail : routes.movieDetail, {
+                    id: item.id,
+                })
+            }
             style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
         >
             <Image

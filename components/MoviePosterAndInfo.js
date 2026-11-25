@@ -3,6 +3,7 @@ import { Dimensions, Image, Pressable, StyleSheet, Text, View } from "react-nati
 import { useNavigation } from "@react-navigation/native";
 
 import { genres } from "../constants/genres";
+import { routes } from "../navigation/routes";
 import MovieRating from "./movieDetail/MovieRating";
 import Skeleton from "./ui/Skeleton";
 import { getImageUrl } from "../service/url";
@@ -31,7 +32,7 @@ const MoviePosterAndInfo = ({ item, type }) => {
     return (
         <Pressable
             onPress={() => {
-                navigation.navigate(type === "tv" ? "TvDetail" : "MovieDetail", { id: item.id });
+                navigation.navigate(type === "tv" ? routes.tvDetail : routes.movieDetail, { id: item.id });
             }}
             style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1, width: CARD_WIDTH }]}
         >

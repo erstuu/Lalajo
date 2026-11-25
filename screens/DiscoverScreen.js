@@ -16,6 +16,7 @@ import ScreenContainer from "../components/ScreenContainer";
 import GenreChips from "../components/ui/GenreChips";
 import { fetchDiscoverPage, setFilter } from "../store/features/discoverSlice";
 import { DISCOVER_GENRES } from "../constants/genres";
+import { routes } from "../navigation/routes";
 import { getImageUrl } from "../service/url";
 import { colors, radius, spacing, type as typeScale } from "../theme";
 
@@ -40,7 +41,7 @@ const DiscoverScreen = () => {
     };
 
     const openDetail = (item) => {
-        navigation.navigate(media === "tv" ? "TvDetail" : "MovieDetail", { id: item.id });
+        navigation.navigate(media === "tv" ? routes.tvDetail : routes.movieDetail, { id: item.id });
     };
 
     const renderItem = ({ item }) => (
