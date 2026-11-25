@@ -1,45 +1,105 @@
 import React from "react";
-import { genres } from "./helper/Genres";
-import { View, TouchableWithoutFeedback, Text } from "react-native";
-import MoviePoster from "./MoviePoster";
+import { Dimensions, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import { genres } from "../constants/genres";
+import { routes } from "../navigation/routes";
 import MovieRating from "./movieDetail/MovieRating";
-import { black } from "./helper/Color";
-import {useNavigation} from "@react-navigation/native";
+import Skeleton from "./ui/Skeleton";
+import { getImageUrl } from "../service/url";
+import { colors, radius, spacing, type } from "../theme";
 
-const Genre = (genreId = []) => {
-    const text = genreId.map((item) => genres[item.toString()].name);
-    return text.join(", ");
-};
+const CARD_GAP = 12;
+const CARD_WIDTH = (Dimensions.get("window").width - spacing.lg * 2 - CARD_GAP) / 2;
 
-const MoviesPosterAndInfo = ({ item, type }) => {
+const genreText = (ids = []) =>
+    ids.map((id) => genres[id]?.name).filter(Boolean).slice(0, 2).join(" • ");
+
+export const GridSkeleton = () => (
+    <View style={styles.skeletonGrid}>
+        {[0, 1, 2, 3].map((i) => (
+            <View key={i} style={{ width: CARD_WIDTH }}>
+                <Skeleton style={styles.skeletonPoster} />
+                <Skeleton style={styles.skeletonLine} />
+            </View>
+        ))}
+    </View>
+);
+
+const MoviePosterAndInfo = ({ item, type }) => {
     const navigation = useNavigation();
+
     return (
-        <View style={{ marginHorizontal: 16, marginVertical: 8 }}>
-            <TouchableWithoutFeedback
-                onPress={() => {
-                    if (type === "tv") {
-                        navigation.navigate("TVDetail", { id: item.id });
-                    } else {
-                        navigation.navigate("MovieDetail", { id: item.id });
-                    }
-                }}
-            >
-                <View style={{ flexDirection: "row" }}>
-                    <MoviePoster item={item} type={type} />
-                    <View style={{ margin: 16, justifyContent: "center", marginBottom: 24, flex: 1 }}>
-                        <Text style={{ fontSize: 16, marginBottom: 10 }} numberOfLines={2}>
-                            {item.name}
-                            {item.title}
-                        </Text>
-                        <MovieRating rating={item.vote_average} textColor={black} />
-                        <Text style={{ fontSize: 12, marginTop: 10, width: "75%" }}>
-                            {Genre(item.genre_ids)}
-                        </Text>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
-        </View>
+        <Pressable
+            onPress={() => {
+                navigation.navigate(type === "tv" ? routes.tvDetail : routes.movieDetail, { id: item.id });
+            }}
+            style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1, width: CARD_WIDTH }]}
+        >
+            <Image
+                source={getImageUrl(item.poster_path)}
+                style={styles.poster}
+                resizeMode={"cover"}
+            />
+            <Text style={styles.title} numberOfLines={1}>{item.title || item.name}</Text>
+            <View style={styles.metaRow}>
+                <MovieRating rating={item.vote_average} />
+                <Text style={styles.meta}>
+                    {(item.release_date || item.first_air_date || "").slice(0, 4)}
+                </Text>
+            </View>
+            <Text style={styles.genres} numberOfLines={1}>{genreText(item.genre_ids)}</Text>
+        </Pressable>
     );
 };
 
-export default MoviesPosterAndInfo;
+export default MoviePosterAndInfo;
+
+const styles = StyleSheet.create({
+    poster: {
+        width: "100%",
+        aspectRatio: 2 / 3,
+        borderRadius: radius.md,
+        backgroundColor: colors.card,
+    },
+
+    title: {
+        ...type.headline,
+        marginTop: spacing.sm,
+    },
+
+    metaRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        marginTop: 2,
+    },
+
+    meta: {
+        fontSize: 13,
+        color: colors.labelSecondary,
+    },
+
+    genres: {
+        fontSize: 12,
+        color: colors.labelTertiary,
+        marginTop: 2,
+    },
+
+    skeletonGrid: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        gap: CARD_GAP,
+        padding: spacing.lg,
+    },
+
+    skeletonPoster: {
+        width: "100%",
+        aspectRatio: 2 / 3,
+    },
+
+    skeletonLine: {
+        height: 14,
+        marginTop: spacing.sm,
+    },
+});

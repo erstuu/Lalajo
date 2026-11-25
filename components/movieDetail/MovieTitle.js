@@ -1,13 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { white } from "../helper/Color";
+import { Text } from "react-native";
+import { colors } from "../../theme";
 
 const MovieTitle = ({ title }) => {
     return (
-        <View>
-            <Text style={{ fontSize: 24, color: white }}>{title}</Text>
-            <View style={{ width: 30, height: 5, backgroundColor: white, marginTop: 4, marginBottom: 8 }} />
-        </View>
+        <Text style={{ fontSize: 30, fontWeight: "700", color: colors.label }} numberOfLines={2}>
+            {title}
+        </Text>
     );
 };
 

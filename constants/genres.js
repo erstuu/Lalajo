@@ -1,3 +1,4 @@
+// Nama genre TMDB berdasarkan id, dipakai untuk menerjemahkan genre_ids dari API.
 export const genres = {
     "12": { name: "Adventure" },
     "14": { name: "Fantasy" },
@@ -27,3 +28,30 @@ export const genres = {
     "10767": { name: "Talk" },
     "10768": { name: "War & Politics" },
 };
+
+// Genre movie dan TV punya id berbeda di TMDB; labelnya menyesuaikan pilihan.
+export const DISCOVER_GENRES = {
+    movie: [
+        ["Action", 28],
+        ["Adventure", 12],
+        ["Sci-Fi", 878],
+        ["Drama", 18],
+        ["Comedy", 35],
+        ["Horror", 27],
+        ["Romance", 10749],
+        ["Thriller", 53],
+    ],
+    tv: [
+        ["Action", 10759],
+        ["Drama", 18],
+        ["Comedy", 35],
+        ["Crime", 80],
+        ["Mystery", 9648],
+        ["Sci-Fi", 10765],
+        ["Western", 37],
+        ["War", 10768],
+    ],
+};
+
+// Label chip dekoratif di slide onboarding.
+export const ONBOARDING_GENRES = ["Action", "Sci-Fi", "Adventure", "Drama"];

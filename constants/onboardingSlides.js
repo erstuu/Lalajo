@@ -1,0 +1,31 @@
+export const SLIDES = [
+    {
+        id: "explore",
+        visual: "carousel",
+        background: require("../assets/onboarding/bg-explore.png"),
+        eyebrow: null,
+        title: "Explore Movies",
+        titleAccent: "& TV Shows",
+        body: "From epic blockbusters to binge-worthy series, find it all in one place.",
+    },
+    {
+        id: "details",
+        visual: "details",
+        background: require("../assets/onboarding/bg-find.png"),
+        eyebrow: "Details at a glance",
+        title: "Find the",
+        titleAccent: "Perfect Watch",
+        body: "Get ratings, genres and more to choose the best movie for your mood.",
+    },
+    {
+        id: "favorites",
+        visual: "favorites",
+        background: require("../assets/onboarding/bg-save.png"),
+        eyebrow: null,
+        title: "Save Your",
+        titleAccent: "Favorites",
+        body: "Build your watchlist and get reminded when new episodes arrive.",
+        fadeHeight: "68%",
+        primaryLabel: "Get Started",
+    },
+];
